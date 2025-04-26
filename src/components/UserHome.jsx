@@ -9,6 +9,10 @@ export default function UserHome({ user }) {
     const [resultadoPago, setResultadoPago] = useState(null); // Estado para el resultado del pago
     const [showModalResultado, setShowModalResultado] = useState(false); // Estado para mostrar el modal de resultado
     const toggleModalResultado = () => setShowModalResultado(!showModalResultado);
+
+    if (!user || user.role !== 'user') {
+        return <Navigate to="/" />;
+      }
     
     const [form, setForm] = useState({
         userId: user._id || "",
